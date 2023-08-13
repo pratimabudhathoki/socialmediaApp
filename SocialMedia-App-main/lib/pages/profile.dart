@@ -266,8 +266,7 @@ class _ProfileState extends State<Profile> {
                                       QuerySnapshot<Object?>? snap =
                                           snapshot.data;
                                       List<DocumentSnapshot> docs = snap!.docs;
-                                      return buildCount(
-                                          "POSTS", docs.length ?? 0);
+                                      return buildCount("POSTS", docs.length);
                                     } else {
                                       return buildCount("POSTS", 0);
                                     }

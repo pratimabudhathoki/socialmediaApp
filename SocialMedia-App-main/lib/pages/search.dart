@@ -63,8 +63,8 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
 
   @override
   void initState() {
-    getUsers();
     super.initState();
+    getUsers();
   }
 
   @override
@@ -152,8 +152,10 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
     if (!loading) {
       if (filteredUsers.isEmpty) {
         return Center(
-          child: Text("No User Found",
-              style: TextStyle(fontWeight: FontWeight.bold),),
+          child: Text(
+            "No User Found",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         );
       } else {
         return Expanded(
@@ -222,21 +224,23 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                               if (snapshot.hasData) {
                                 var snap = snapshot.data;
                                 List docs = snap!.docs;
-                                print(snapshot.data!.docs.toString());
+                                if (docs.isNotEmpty) {
+                                  print(
+                                      "chat id =======> ${docs[0]['chatId']}");
+                                }
                                 return docs.isEmpty
                                     ? Conversation(
                                         userId: doc.id,
-                                        chatId: 'newChat',
+                                        chatId: "newChat",
                                       )
                                     : Conversation(
                                         userId: doc.id,
-                                        chatId:
-                                            docs[0].get('chatId').toString(),
+                                        chatId: "newChat",
                                       );
                               }
                               return Conversation(
                                 userId: doc.id,
-                                chatId: 'newChat',
+                                chatId: "newChat",
                               );
                             },
                           ),

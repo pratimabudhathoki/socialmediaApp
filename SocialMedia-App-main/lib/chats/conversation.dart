@@ -39,7 +39,9 @@ class _ConversationState extends State<Conversation> {
       focusNode.unfocus();
     });
     if (widget.chatId == 'newChat') {
-      isFirst = true;
+      setState(() {
+        isFirst = true;
+      });
     }
     chatId = widget.chatId;
 
